@@ -1,0 +1,319 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "roboto", sans-serif;
+}
+
+body{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* border: 3px solid red; */
+}
+
+header{
+    color: white;
+    width: 100vw;
+    height: 8%;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    padding: 10px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.644);
+    border-bottom: 2px solid yellow;
+    transform: translateY(-60px);
+    animation: ShowHeader 0.5s linear 1 forwards;
+
+    & .logo{
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        & h1 {
+            font-family: "inter", sans-serif;
+            text-transform: uppercase;
+            font-weight: 300;
+            font-size: 30px;
+        }
+
+        & img{
+            width: 50px;
+        }
+    }
+
+    & ul {
+        display: flex;
+        gap: 40px;
+
+        & li {
+            list-style: none;
+            font-family: "inter", sans-serif;
+            text-transform: uppercase;
+            padding: 0;
+            cursor: pointer;
+            font-weight: 500;
+        }
+    }
+}
+
+@keyframes ShowHeader {
+    to{
+        transform: translateY(0);
+    }
+    
+}
+
+ul li:hover{
+    text-decoration: underline yellow 3px;
+    text-underline-offset: 6px;
+    color: yellow;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    /* border: 2px solid red; */
+
+    & .list {
+
+        & .text-description {
+            position: absolute;
+            color: aliceblue;
+            z-index: 2;
+            top: 45%;
+            left: 2%;
+            max-width: 500px;
+            width: 100%;
+
+            & p {
+                margin: 15px 0;
+            }
+    
+            & h1 {
+                text-transform: uppercase;
+                font-family: "inter", sans-serif;
+                font-size: 50px;
+                font-weight: 300;
+            }
+    
+            & .text-description-btn{
+                display: flex;
+                gap: 15px;
+    
+                & .before-button {
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50%;
+                    background-color: yellow;
+                    border: none;
+                }
+    
+                & button {
+                    width: 130px;
+                    text-transform: uppercase;
+                    font-family: "inter", sans-serif;
+                    border-radius: 25px;
+                    padding: auto 15px;
+                    background: none;
+                    border: 1px solid white;
+                    color: aliceblue;
+                    cursor: pointer;
+                }
+            }
+    }
+}
+
+    & section {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        padding: 0;
+        top: 60%;
+        left: 50%;
+        /* border: 5px solid rgb(38, 255, 0); */
+        position: absolute;
+        z-index: 1;
+        overflow: hidden;
+        
+
+        & .card {
+            position: relative;
+            /* border: 1px solid red; */
+            width: 150px;
+            height: 250px;
+            transition: 0.5s ease;
+            cursor: pointer;
+            margin: 0 20px 0 0;
+            
+            & img {
+                filter: brightness(0.8);
+                position: absolute;
+                width: inherit;
+                height: inherit;
+                border-radius: 10px;
+                box-shadow: 6px 6px 10px 2px rgba(0, 0, 0, 0.6);
+                object-fit: cover;
+                
+            }
+
+            /* & p {
+                position: absolute;
+                color: white;
+                bottom: 17%;
+                left: 10px;
+                font-size: 13px;
+                z-index: 2;
+            } */
+
+            & h2 {
+                position: absolute;
+                text-transform: uppercase;
+                color: white;
+                bottom: 5%;
+                font-size: 100%;
+                left: 10px;
+                font-family: "inter", sans-serif;
+                font-weight: 500;
+                white-space: wrap;
+            }
+        }
+
+        & .card-slide{
+            transform: translateX(-170px);
+        }
+    }
+}
+
+
+.list {
+    & .text-description{
+        transform: translateX(0);
+        transition: 0.8s;
+        opacity: 0;
+        animation: hide-blur 0.5s linear 1 forwards;
+    }
+
+    & .text-effect{
+        filter: blur(20px);
+        transform: translateX(-120%);
+        opacity: 1;
+        transition: 1s;
+        animation: Show-blur 0.7s linear 1 forwards;
+        z-index: 2;
+    }
+}
+
+
+@keyframes Show-blur {
+    to{
+        filter: blur(0);
+        transform: translateX(0);
+    }
+    
+}
+
+@keyframes hide-blur {
+    to{
+        transform: translateX(-120%);
+    }
+    
+}
+
+.background{
+    position: absolute;
+    /* border: 6px solid blue; */
+    z-index: 0;
+    inset: 0;
+
+    & .back-img {
+        position: absolute;
+        width: 150px;
+        height: 250px;
+        top: 60%;
+        left: 50%;
+        opacity: 0;
+
+        & img {
+            object-fit: cover;
+            filter: brightness(0.5);
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    & .resize-img{
+        opacity: 1;
+        animation: Resize-img 0.3s linear 1 forwards;
+    }
+}
+
+@keyframes Resize-img {
+    to{
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+
+.slider {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    gap: 10px;
+
+    & .button{
+        display: flex;
+        gap: 30px;
+
+        & button {
+            width: 40px;
+            padding: 5px 5px;
+            font-size: 25px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background-color: transparent;
+            color: white;
+            cursor: pointer;
+        }
+
+        & button:hover{
+            background-color: yellow;
+            transition: 0.3s;
+            color: black;
+        }
+    }
+
+    & .slider-line{
+        display: flex;
+        gap: 0;
+
+        & .slider-bar{
+            height: 5px;
+            width: 80px;
+            background-color: transparent;
+            border-radius: 10px;
+        }
+
+        & .select{
+            background-color: yellow;
+            transition: 0.3s ease-in-out;
+        }
+    }
+
+    & #position-number{
+        font-size: 40px;
+        color: white;
+        font-weight: bolder;
+    }
+}
